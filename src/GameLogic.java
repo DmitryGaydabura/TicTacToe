@@ -4,15 +4,15 @@ public class GameLogic {
 
     public static int whoWillBeFirst() {
         int A = (int) (Math.random() * 10);
+        int side;
         if (A > 5) {
-            int side = 0;
+            side = 0;
             System.out.println("You will start");
-            return side;
         } else {
-            int side = 1;
+            side = 1;
             System.out.println("Computer will start");
-            return side;
         }
+        return side;
     }
 
     public static void start(int side, Spaces A1, Spaces A2, Spaces A3, Spaces B1, Spaces B2, Spaces B3, Spaces C1, Spaces C2, Spaces C3, int numberOfTurns, String player, String computer) {
@@ -24,6 +24,11 @@ public class GameLogic {
 
 
             //Player will choose his move
+            if (numberOfTurns == 1) {
+                System.out.println("Enter your turn (For example, A1)");
+            }else{
+                System.out.println("Enter your turn");
+            }
             label:
             while (true) {
                 Scanner in = new Scanner(System.in);
@@ -331,6 +336,55 @@ public class GameLogic {
         System.out.println("                      ");
         System.out.println("       ^     ^     ^  ");
         System.out.println("       1     2     3  ");
+    }
+
+    public static void input(OorX player, OorX computer) {
+        while (true) {
+
+
+            System.out.println("Enter: X or O");
+            Scanner in = new Scanner(System.in);
+            String n = in.nextLine().toLowerCase();
+
+            if (!n.equals("o") && !n.equals("x")) {
+                System.out.println("Incorrect Input. Please, try again.");
+                continue;
+            }
+            if (n.equals("o")) {
+                System.out.println("You will be playing as O");
+                System.out.println("Computer will be playing as X");
+                player.setType("O");
+                computer.setType("X");
+            } else {
+                System.out.println("You will be playing as X");
+                System.out.println("Computer will be playing as O");
+                player.setType("X");
+                computer.setType("O");
+            }
+            break;
+        }
+    }
+
+    public static int decideIfFieldIsNeeded() {
+        int side = GameLogic.whoWillBeFirst();
+        if (side == 0) {
+            GameLogic.createField();
+        }
+        return side;
+    }
+
+    public static void createLogo() {
+        System.out.println("""
+
+                  _______ _          _______             _______         \s
+                 |__   __(_)        |__   __|           |__   __|        \s
+                    | |   _  ___ ______| | __ _  ___ ______| | ___   ___ \s
+                    | |  | |/ __|______| |/ _` |/ __|______| |/ _ \\ / _ \\\s
+                    | |  | | (__       | | (_| | (__       | | (_) |  __/\s
+                    |_|  |_|\\___|      |_|\\__,_|\\___|      |_|\\___/ \\___|\s
+                                                                         \s
+                                                                         \s
+                """);
     }
 }
 
