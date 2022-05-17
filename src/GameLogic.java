@@ -65,7 +65,7 @@ public class GameLogic {
                 System.out.println("Incorrect input. Please, try again.");
             }
             //Check win
-
+            checkWin(A1.type, A2.type, A3.type, B1.type, B2.type, B3.type, C1.type, C2.type, C3.type, player, computer);
             //change turn
             side = 1;
 
