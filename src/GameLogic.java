@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class GameLogic {
 
     public static int whoWillBeFirst() {
-        int A = (int) (Math.random() * 10);
+
         int side;
-        if (A > 5) {
+        if ((int) (Math.random() * 10) > 5) {
             side = 0;
             System.out.println("You will start");
         } else {
@@ -38,7 +38,7 @@ public class GameLogic {
                         if (A1.type.equals(" ")) {
                             A1.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -46,7 +46,7 @@ public class GameLogic {
                         if (A2.type.equals(" ")) {
                             A2.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -54,7 +54,7 @@ public class GameLogic {
                         if (A3.type.equals(" ")) {
                             A3.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -62,7 +62,7 @@ public class GameLogic {
                         if (B1.type.equals(" ")) {
                             B1.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -70,7 +70,7 @@ public class GameLogic {
                         if (B2.type.equals(" ")) {
                             B2.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -78,7 +78,7 @@ public class GameLogic {
                         if (B3.type.equals(" ")) {
                             B3.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -86,7 +86,7 @@ public class GameLogic {
                         if (C1.type.equals(" ")) {
                             C1.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -94,7 +94,7 @@ public class GameLogic {
                         if (C2.type.equals(" ")) {
                             C2.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -102,7 +102,7 @@ public class GameLogic {
                         if (C3.type.equals(" ")) {
                             C3.setType(player);
                             break label;
-                        }else{
+                        } else {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
@@ -178,199 +178,25 @@ public class GameLogic {
 
     public static String makeMove(String A1, String A2, String A3, String B1, String B2, String B3, String C1, String C2, String C3) {
         //diagonal check
-        if (A1.equals(B2) && C3.equals(" ")) {
-            return "C3";
+        String Answer = MoveLogic.diagonalMoves(A1, A3, B2, C1, C3);
+        if (Answer.equals(" ")){
+            Answer = MoveLogic.horizontalMoves(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+            if(Answer.equals(" ")){
+                Answer = MoveLogic.verticalMoves(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+            }else{
+                Answer = MoveLogic.randomMoves(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+            }
+        }else{
+            return Answer;
         }
-        if (A1.equals(C3) && B2.equals(" ")) {
-            return "B2";
-        }
-        if (B2.equals(C3) && A1.equals(" ")) {
-            return "A1";
-        }
-        if (A3.equals(B2) && C1.equals(" ")) {
-            return "C1";
-        }
-        if (A3.equals(C1) && B2.equals(" ")) {
-            return "B2";
-        }
-        if (B2.equals(C1) && A3.equals(" ")) {
-            return "A3";
-        }
-        //horizontal check
-        if (A1.equals(A2) && A3.equals(" ")) {
-            return "A3";
-        }
-        if (A1.equals(A3) && A2.equals(" ")) {
-            return "A2";
-        }
-        if (A2.equals(A3) && A1.equals(" ")) {
-            return "A1";
-        }
-        if (B1.equals(B2) && B3.equals(" ")) {
-            return "B3";
-        }
-        if (B1.equals(B3) && B2.equals(" ")) {
-            return "B2";
-        }
-        if (B2.equals(B3) && B1.equals(" ")) {
-            return "B1";
-        }
-        if (C1.equals(C2) && C3.equals(" ")) {
-            return "C3";
-        }
-        if (C1.equals(C3) && C2.equals(" ")) {
-            return "C2";
-        }
-        if (C2.equals(C3) && C1.equals(" ")) {
-            return "C1";
-        }
-
-        //vertical check
-        if (A1.equals(B1) && C1.equals(" ")) {
-            return "C1";
-        }
-        if (A1.equals(C1) && B1.equals(" ")) {
-            return "B1";
-        }
-        if (B1.equals(C1) && A1.equals(" ")) {
-            return "A1";
-        }
-        if (A2.equals(B2) && C2.equals(" ")) {
-            return "C2";
-        }
-        if (A2.equals(C2) && B2.equals(" ")) {
-            return "B2";
-        }
-        if (B2.equals(C2) && A2.equals(" ")) {
-            return "A2";
-        }
-        if (A3.equals(B3) && C3.equals(" ")) {
-            return "C3";
-        }
-        if (A3.equals(C3) && B3.equals(" ")) {
-            return "B3";
-        }
-        if (B3.equals(C3) && A3.equals(" ")) {
-            return "A3";
-        }
-
-
-        if (B2.equals(" ")) {
-            return "B2";
-        }
-        if (A1.equals(" ")) {
-            return "A1";
-        }
-        if (A2.equals(" ")) {
-            return "A2";
-        }
-        if (A3.equals(" ")) {
-            return "A3";
-        }
-        if (B1.equals(" ")) {
-            return "B1";
-        }
-        if (B3.equals(" ")) {
-            return "B3";
-        }
-        if (C1.equals(" ")) {
-            return "C1";
-        }
-        if (C2.equals(" ")) {
-            return "C2";
-        }
-        if (C3.equals(" ")) {
-            return "C3";
-        }
-        return " ";
+        return Answer;
     }
 
     public static void checkWin(String A1, String A2, String A3, String B1, String B2, String B3, String C1, String C2, String C3, String player, String computer) {
-        //horizontal check
-        if (A1.equals(A2) && A3.equals(A2) && A1.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A1.equals(A2) && A3.equals(A2) && A1.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-        if (B1.equals(B2) && B3.equals(B2) && B1.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (B1.equals(B2) && B3.equals(B2) && B1.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-        if (C1.equals(C2) && C3.equals(C2) && C1.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (C1.equals(C2) && C3.equals(C2) && C1.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
 
-
-        //vertical check
-        if (A1.equals(B1) && C1.equals(B1) && A1.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A1.equals(B1) && C1.equals(B1) && A1.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-        if (A2.equals(B2) && C2.equals(B2) && B2.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A2.equals(B2) && C2.equals(B2) && B2.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-        if (A3.equals(B3) && C3.equals(B3) && C3.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A3.equals(B3) && C3.equals(B3) && C3.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-
-        //diagonal check
-        if (A1.equals(B2) && C3.equals(B2) && B2.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A1.equals(B2) && C3.equals(B2) && B2.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-            return;
-        }
-        if (A3.equals(B2) && C1.equals(B2) && B2.equals(player)) {
-            System.out.println("You won!");
-            System.exit(0);
-            return;
-        }
-        if (A3.equals(B2) && C1.equals(B2) && B2.equals(computer)) {
-            System.out.println("Computer won!");
-            System.exit(0);
-        }
+        CheckLogic.horizontalCheck(A1, A2, A3, B1, B2, B3, C1, C2, C3, player, computer);
+        CheckLogic.verticalCheck(A1, A2, A3, B1, B2, B3, C1, C2, C3, player, computer);
+        CheckLogic.diagonalCheck(A1, A2, A3, B1, B2, B3, C1, C2, C3, player, computer);
     }
 
     public static void createField() {
