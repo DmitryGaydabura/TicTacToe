@@ -26,7 +26,7 @@ public class GameLogic {
             //Player will choose his move
             if (numberOfTurns == 1) {
                 System.out.println("Enter your turn (For example, A1)");
-            }else{
+            } else {
                 System.out.println("Enter your turn");
             }
             label:
@@ -35,32 +35,77 @@ public class GameLogic {
                 String n = in.nextLine().toLowerCase();
                 switch (n.toUpperCase()) {
                     case "A1":
-                        A1.setType(player);
-                        break label;
+                        if (A1.type.equals(" ")) {
+                            A1.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "A2":
-                        A2.setType(player);
-                        break label;
+                        if (A2.type.equals(" ")) {
+                            A2.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "A3":
-                        A3.setType(player);
-                        break label;
+                        if (A3.type.equals(" ")) {
+                            A3.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "B1":
-                        B1.setType(player);
-                        break label;
+                        if (B1.type.equals(" ")) {
+                            B1.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "B2":
-                        B2.setType(player);
-                        break label;
+                        if (B2.type.equals(" ")) {
+                            B2.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "B3":
-                        B3.setType(player);
-                        break label;
+                        if (B3.type.equals(" ")) {
+                            B3.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "C1":
-                        C1.setType(player);
-                        break label;
+                        if (C1.type.equals(" ")) {
+                            C1.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "C2":
-                        C2.setType(player);
-                        break label;
+                        if (C2.type.equals(" ")) {
+                            C2.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                     case "C3":
-                        C3.setType(player);
-                        break label;
+                        if (C3.type.equals(" ")) {
+                            C3.setType(player);
+                            break label;
+                        }else{
+                            System.out.println("Incorrect input. Please, try again.");
+                            continue;
+                        }
                 }
                 System.out.println("Incorrect input. Please, try again.");
             }
@@ -325,7 +370,8 @@ public class GameLogic {
             System.exit(0);
         }
     }
-    public static void  createField(){
+
+    public static void createField() {
         System.out.println("          |     |     ");
         System.out.println("A->       |     |     ");
         System.out.println("     -----+-----+-----");
