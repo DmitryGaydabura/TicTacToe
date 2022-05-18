@@ -106,6 +106,8 @@ public class GameLogic {
                             System.out.println("Incorrect input. Please, try again.");
                             continue;
                         }
+                    default:
+                        System.out.println("Incorrect input");
                 }
                 System.out.println("Incorrect input. Please, try again.");
             }

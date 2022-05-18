@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class StartGame {
     public static void main(String[] args) {
@@ -6,7 +6,7 @@ public class StartGame {
         OorX player = new OorX(" ");
         OorX computer = new OorX(" ");
         GameLogic.createLogo();
-        GameLogic.input(player,computer);
+        GameLogic.input(player, computer);
 
 
         Spaces A1 = new Spaces(1, " ");
